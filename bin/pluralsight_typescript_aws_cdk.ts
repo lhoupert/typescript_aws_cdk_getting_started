@@ -2,9 +2,10 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { PluralsightTypescriptAwsCdkStack } from '../lib/pluralsight_typescript_aws_cdk-stack';
+import { Tags } from 'aws-cdk-lib';
 
 const app = new cdk.App();
-new PluralsightTypescriptAwsCdkStack(app, 'PluralsightTypescriptAwsCdkStack', {
+const stack = new PluralsightTypescriptAwsCdkStack(app, 'PluralsightTypescriptAwsCdkStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
@@ -19,3 +20,6 @@ new PluralsightTypescriptAwsCdkStack(app, 'PluralsightTypescriptAwsCdkStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+Tags.of(stack).add('App', 'DocumentManagement');
+Tags.of(stack).add('Environment', 'Development');
