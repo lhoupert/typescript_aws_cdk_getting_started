@@ -1,0 +1,17 @@
+{
+  "name": "service-get-documents",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.109",
+    "aws-cdk": "2.58.1"
+  },
+  "dependencies": {
+  }
+}
