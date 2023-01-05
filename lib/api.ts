@@ -1,11 +1,12 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as lambda from 'aws-cdk-lib/aws-lambda-nodejs';
-import * as path from 'path';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as path from 'path';
 
 interface DocumentManagementAPIProps {
-
+  documentBucket: s3.IBucket
 }
 
 export class DocumentManagementAPI extends Construct {
@@ -19,7 +20,11 @@ export class DocumentManagementAPI extends Construct {
       bundling: {
         externalModules: [
         'aws-sdk'
-      ]}
+      ]
+      },
+      environment: {
+        DOCUMENTS_BUCKET_NAME: props.documentBucket.bucketName
+      }
     })
   }
 }
